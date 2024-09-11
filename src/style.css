@@ -21,3 +21,11 @@ body,
     border-radius: 20px;
     background: transparent;
 }
+
+.htmlHandy iframe {
+    width: 350px;
+    height: 760px;
+    border: none;
+    border-radius: 45px;
+    background: transparent;
+}

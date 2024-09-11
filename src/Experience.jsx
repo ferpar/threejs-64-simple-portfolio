@@ -14,7 +14,8 @@ export default function Experience() {
   const computer = useGLTF("/macbook_model.gltf");
   const handy = useGLTF("/handy_model.gltf");
   const [link, setLink] = React.useState("https://html-cv-lake.vercel.app/");
-  const [isMobile, setIsMobile] = React.useState(false);
+  const defaultMobile = window.innerWidth < 800;
+  const [isMobile, setIsMobile] = React.useState(defaultMobile);
   const updateMobile = () => {
     if (window.innerWidth < 800) {
       setIsMobile(true);
@@ -44,7 +45,37 @@ export default function Experience() {
       >
         <Float rotationIntensity={0.4}>
           {isMobile ? (
-            <primitive object={handy.scene} position={[0, -1.2, 0]} />
+            <primitive object={handy.scene} position={[0, -1.2, 0]}>
+              <Html
+                transform
+                center
+                wrapperClass="htmlHandy"
+                distanceFactor={1.73}
+                position={[0.17, 1.32, 0.076]}
+              >
+                <iframe src={link} />
+              </Html>
+              <Text
+                font="./Jura-VariableFont_wght.ttf"
+                position={[1.2, 2.5, 0.5]}
+                rotation-y={-1.25}
+                maxWidth={2}
+                fontSize={0.2}
+                onClick={() => setLink("https://html-cv-lake.vercel.app/")}
+              >
+                Resumé
+              </Text>
+              <Text
+                font="./Jura-VariableFont_wght.ttf"
+                position={[1.2, 2.25, 0.5]}
+                rotation-y={-1.25}
+                maxWidth={2}
+                fontSize={0.2}
+                onClick={() => setLink("https://agilizaseller.com")}
+              >
+                Agiliza
+              </Text>
+            </primitive>
           ) : (
             <>
               <rectAreaLight
