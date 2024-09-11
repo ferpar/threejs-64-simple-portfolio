@@ -23,6 +23,11 @@ export default function Experience() {
       setIsMobile(false);
     }
   };
+
+  const desktopRotation = [0.13, 0.1, 0];
+  const mobileRotation = [-0.05, 0, 0];
+  const decideRotation = () => isMobile ? mobileRotation : desktopRotation;
+
   React.useEffect(() => {
     window.addEventListener("resize", updateMobile);
     return () => {
@@ -37,15 +42,14 @@ export default function Experience() {
 
       <PresentationControls
         global
-        rotation={[0.13, 0.1, 0]}
+        rotation={decideRotation()}
         polar={[-0.4, 0.2]}
         azimuth={[-1, 0.75]}
         config={{ mass: 2, rension: 400 }}
-        // snap={{ mass: 4, tension: 400}}
       >
         <Float rotationIntensity={0.4}>
           {isMobile ? (
-            <primitive object={handy.scene} position={[0, -1.2, 0]}>
+            <primitive object={handy.scene} position={[-0.6, -1.2, 0.5]}>
               <Html
                 transform
                 center
