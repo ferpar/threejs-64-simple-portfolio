@@ -5,7 +5,6 @@ import {
   PresentationControls,
   ContactShadows,
   Html,
-  Text,
 } from "@react-three/drei";
 
 import React from "react";
@@ -60,11 +59,11 @@ export default function Experience() {
         rotation={decideRotation()}
         polar={[-0.4, 0.2]}
         azimuth={[-1, 0.75]}
-        config={{ mass: 2, rension: 400 }}
+        config={{ mass: 2, tension: 400 }}
       >
         <Float rotationIntensity={0.4}>
           {isMobile ? (
-            <group position={[-0.9, -1.2, 0.2]}>
+            <group position={[-0.75, -1.2, 0.4]}>
               <primitive object={handy.scene} position={[0, 0, 0]}>
                 <Html
                   transform
@@ -77,19 +76,30 @@ export default function Experience() {
                   <iframe src={link} />
                 </Html>
               </primitive>
-              {Pages.map((page, index) => (
-                <Text
-                  key={index}
-                  font="./Jura-VariableFont_wght.ttf"
-                  position={[1.3, 2.7 - index * 0.25, 0.6]}
-                  rotation-y={-1.25}
-                  maxWidth={2}
-                  fontSize={0.2}
-                  onClick={() => setLink(page.link)}
-                >
-                  {page.title}
-                </Text>
-              ))}
+              <Html
+                transform
+                prepend={true}
+                center
+                wrapperClass="htmlMenu"
+                distanceFactor={1.73}
+                rotation-y={-1.25}
+                position={[1.3, 2.5, 0.6]}
+                style={{ color: "white" }}
+              >
+                <div className="menuWrapper">
+                  <h1>Hi, Check my Work here!</h1>
+                  <div className="projectList"
+                  >
+                    {Pages.map((page, index) => (
+                      <button 
+                      className="projectButton"
+                      key={index} onClick={() => setLink(page.link)}>
+                        {page.title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </Html>
             </group>
           ) : (
             <>
@@ -113,19 +123,30 @@ export default function Experience() {
                   <iframe src={link} />
                 </Html>
               </primitive>
-              {Pages.map((page, index) => (
-                <Text
-                  key={index}
-                  font="./Jura-VariableFont_wght.ttf"
-                  position={[1.2, 1.2 - index * 0.25, 0.7]}
-                  rotation-y={-1.25}
-                  maxWidth={2}
-                  fontSize={0.2}
-                  onClick={() => setLink(page.link)}
-                >
-                  {page.title}
-                </Text>
-              ))}
+              <Html
+                transform
+                prepend={true}
+                center
+                wrapperClass="htmlMenu"
+                distanceFactor={1.73}
+                rotation-y={-1.25}
+                position={[1.2, 1, 0.7]}
+                style={{ color: "white" }}
+              >
+                <div className="menuWrapper">
+                  <h1>Hi, Check my Work here!</h1>
+                  <div className="projectList"
+                  >
+                    {Pages.map((page, index) => (
+                      <button 
+                      className="projectButton"
+                      key={index} onClick={() => setLink(page.link)}>
+                        {page.title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </Html>
             </>
           )}
         </Float>
