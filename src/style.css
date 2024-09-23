@@ -45,9 +45,10 @@ body,
   font-size: 1.5rem;
   border: none;
   border-radius: 8px;
-  color: black;
-  background: rgb(251, 147, 28);
+  color: white;
+  background: rgb(255, 136, 0);
   cursor: pointer;
+  padding: 0.25rem 0;
 }
 
 .htmlMenu .projectButton:hover {
