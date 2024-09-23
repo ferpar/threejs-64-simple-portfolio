@@ -10,6 +10,21 @@ import {
 
 import React from "react";
 
+const Pages = [
+  {
+    title: "Resumé",
+    link: "https://html-cv-lake.vercel.app/",
+  },
+  {
+    title: "Agiliza",
+    link: "https://agilizaseller.com",
+  },
+  {
+    title: "D3+Framer",
+    link: "https://react-d3-framer.vercel.app",
+  },
+];
+
 export default function Experience() {
   const computer = useGLTF("/macbook_model.gltf");
   const handy = useGLTF("/handy_model.gltf");
@@ -26,7 +41,7 @@ export default function Experience() {
 
   const desktopRotation = [0.13, 0.1, 0];
   const mobileRotation = [-0.05, 0, 0];
-  const decideRotation = () => isMobile ? mobileRotation : desktopRotation;
+  const decideRotation = () => (isMobile ? mobileRotation : desktopRotation);
 
   React.useEffect(() => {
     window.addEventListener("resize", updateMobile);
@@ -43,43 +58,39 @@ export default function Experience() {
       <PresentationControls
         global
         rotation={decideRotation()}
-        polar={[-0.4, 0.2]}
-        azimuth={[-1, 0.75]}
+        // polar={[-0.4, 0.2]}
+        // azimuth={[-1, 0.75]}
         config={{ mass: 2, rension: 400 }}
       >
         <Float rotationIntensity={0.4}>
           {isMobile ? (
-            <primitive object={handy.scene} position={[-0.6, -1.2, 0.5]}>
-              <Html
-                transform
-                center
-                wrapperClass="htmlHandy"
-                distanceFactor={1.73}
-                position={[0.17, 1.32, 0.076]}
-              >
-                <iframe src={link} />
-              </Html>
-              <Text
-                font="./Jura-VariableFont_wght.ttf"
-                position={[1.2, 2.5, 0.5]}
-                rotation-y={-1.25}
-                maxWidth={2}
-                fontSize={0.2}
-                onClick={() => setLink("https://html-cv-lake.vercel.app/")}
-              >
-                Resumé
-              </Text>
-              <Text
-                font="./Jura-VariableFont_wght.ttf"
-                position={[1.2, 2.25, 0.5]}
-                rotation-y={-1.25}
-                maxWidth={2}
-                fontSize={0.2}
-                onClick={() => setLink("https://agilizaseller.com")}
-              >
-                Agiliza
-              </Text>
-            </primitive>
+            <group position={[-0.9, -1.2, 0.2]}>
+              <primitive object={handy.scene} position={[0, 0, 0]}>
+                <Html
+                  transform
+                  prepend={true}
+                  center
+                  wrapperClass="htmlHandy"
+                  distanceFactor={1.73}
+                  position={[0.17, 1.32, 0.084]}
+                >
+                  <iframe src={link} />
+                </Html>
+              </primitive>
+              {Pages.map((page, index) => (
+                <Text
+                  key={index}
+                  font="./Jura-VariableFont_wght.ttf"
+                  position={[1.3, 2.7 - index * 0.25, 0.6]}
+                  rotation-y={-1.25}
+                  maxWidth={2}
+                  fontSize={0.2}
+                  onClick={() => setLink(page.link)}
+                >
+                  {page.title}
+                </Text>
+              ))}
+            </group>
           ) : (
             <>
               <rectAreaLight
@@ -90,7 +101,7 @@ export default function Experience() {
                 rotation={[0.1, Math.PI, 0]}
                 position={[0, 0.55, -1.15]}
               />
-              <primitive object={computer.scene} position-y={-1.2}>
+              <primitive object={computer.scene} position={[-0.8, -1.2, 1.5]}>
                 <Html
                   transform
                   center
@@ -102,26 +113,19 @@ export default function Experience() {
                   <iframe src={link} />
                 </Html>
               </primitive>
-              <Text
-                font="./Jura-VariableFont_wght.ttf"
-                position={[2, 1, -0.5]}
-                rotation-y={-1.25}
-                maxWidth={2}
-                fontSize={0.2}
-                onClick={() => setLink("https://html-cv-lake.vercel.app/")}
-              >
-                Check Resumé
-              </Text>
-              <Text
-                font="./Jura-VariableFont_wght.ttf"
-                position={[2, 0.75, -0.5]}
-                rotation-y={-1.25}
-                maxWidth={2}
-                fontSize={0.2}
-                onClick={() => setLink("https://agilizaseller.com")}
-              >
-                Agiliza Landing
-              </Text>
+              {Pages.map((page, index) => (
+                <Text
+                  key={index}
+                  font="./Jura-VariableFont_wght.ttf"
+                  position={[1.2, 1.2 - index * 0.25, 0.7]}
+                  rotation-y={-1.25}
+                  maxWidth={2}
+                  fontSize={0.2}
+                  onClick={() => setLink(page.link)}
+                >
+                  {page.title}
+                </Text>
+              ))}
             </>
           )}
         </Float>
