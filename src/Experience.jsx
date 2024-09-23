@@ -58,8 +58,8 @@ export default function Experience() {
       <PresentationControls
         global
         rotation={decideRotation()}
-        // polar={[-0.4, 0.2]}
-        // azimuth={[-1, 0.75]}
+        polar={[-0.4, 0.2]}
+        azimuth={[-1, 0.75]}
         config={{ mass: 2, rension: 400 }}
       >
         <Float rotationIntensity={0.4}>
