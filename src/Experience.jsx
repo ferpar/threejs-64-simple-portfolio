@@ -24,6 +24,8 @@ const Pages = [
   },
 ];
 
+let isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
 export default function Experience() {
   const computer = useGLTF("/macbook_model.gltf");
   const handy = useGLTF("/handy_model.gltf");
@@ -52,7 +54,7 @@ export default function Experience() {
     <>
       <Environment preset="city" />
 
-      <color args={["#201b1b"]} attach="background" />
+      <color args={isDarkMode ? ["#201b1b"] : ["#635454"]} attach="background" />
 
       <PresentationControls
         global
