@@ -7,7 +7,7 @@ body,
     left: 0;
     width: 100%;
     height: 100%;
-    background: ivory;
+    background: linear-gradient(180deg, #002b76 0%, #3d7ecb 70%, #92a1c5 100%);
 }
 
 .r3f {

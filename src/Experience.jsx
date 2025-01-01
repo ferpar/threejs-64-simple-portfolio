@@ -54,7 +54,8 @@ export default function Experience() {
     <>
       <Environment preset="city" />
 
-      <color args={isDarkMode ? ["#201b1b"] : ["#635454"]} attach="background" />
+      {/* <color args={isDarkMode ? ["#201b1b"] : ["#635454"]} attach="background" /> */}
+
 
       <PresentationControls
         global
